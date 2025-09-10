@@ -133,6 +133,7 @@ def get_likes():
 
 @app.route("/results", methods=["GET"])
 def results():
+    sessions = query(program, "SELECT * FROM sessions", fetch=True)
     presentations = query(program, "SELECT * FROM presentations ORDER BY likes DESC", fetch=True)
     return render_template ("results.html", sessions=sessions, presentations=presentations)
 
