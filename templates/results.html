@@ -2,19 +2,30 @@
 
 {% block body %}
 
-<h2 class = "location"> Результаты </h2>
-    <table class = "presentations">
-        <tbody>
-            {% for presentation in presentations %}
-                <tr>
-                    <td style="font-weight: bold" class="presentation_table_d" id="presentation_id"> {{ presentation.name }} </td>
-                    <td class="presentation_table_d" id="likes_q"> {{ presentation.likes }} </td>
-                </tr>
-                <tr>
-                    <td class="presentation_authors"> {{ presentation.authors }} </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    {% for session in sessions %} <!-- Заменить location на session -->
+    <div class="presentation-container">  <!-- Обертка для сессии -->
+        <h2 class="location"> {{ session.name }} </h2>
+        <table class="presentations">
+            <tbody>
+                {% for presentation in presentations %}
+                    {% if presentation.session_id == session.id %}
+                        <tr>
+                            <td style="font-weight: bold" class="presentation_name"> {{ presentation.name }} </td>
+                            <td class="like-count" rowspan="2">
+                                {{ presentation.likes }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="presentation_authors"> {{ presentation.authors }} </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>  <!-- Закрываем presentation-container -->
+    {% endfor %}
+
 
 {% endblock %}
+
+

@@ -1,116 +1,251 @@
-/* Оформление для layout.html */
+/* Основные переменные */
+:root {
+    --primary-color: #235079; /* Средний оттенок между текущим и Navy Blue */
+    --secondary-color: #ffffff; /* Белый */
+    --hover-color: #ADD8E6; /* Светло-голубой для hover-эффектов */
+    --accent-color: #00aaff;
+    --font-main: "Arial", "Helvetica", sans-serif;
+}
 
+/* Общие стили */
 html, body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    font-family: var(--font-main);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding-top: env(safe-area-inset-top, 0px); /* Учитываем безопасную область сверху */
 }
 
+/* Контейнер шапки и меню */
+.header-container {
+    position: fixed; /* Фиксируем контейнер шапки и меню */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100; /* Шапка всегда сверху */
+    background-color: var(--primary-color); /* Фон контейнера */
+    padding-top: env(safe-area-inset-top, 0px); /* Учитываем safe-area */
+}
+
+/* Шапка */
 header {
-    /* Стиль для самого хедера */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 15vh;
-    background-color: #3333aa;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 15px 10px;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header_table {
+    width: 100%;
 }
 
 .header {
-    font-family: Arial;
-    font-size: clamp(16px, 5vw, 48px);
     font-weight: bold;
-    color: white;
+    display: block;
 }
 
+#header_up {
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+#header_down {
+    font-size: 1.3rem;
+    margin-top: 5px;
+}
+
+/* Меню */
 .menu {
     display: flex;
-    margin: 0;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: nowrap;
     padding: 0;
+    background-color: var(--hover-color);
+    margin-top: 0; /* Убираем отступ */
+}
+
+.menu form {
+    width: 50%; /* Каждая форма занимает половину ширины */
+    padding: 0;
+    margin: 0;
 }
 
 .menubuttons {
-    flex: 1;
-    width: 50vw;
-    padding: 15px; /* Через clamp */
-    align-items: center;
-    justify-content: center;
-    background-color: #666699;
-    font-size: 12px;
-    color: white;
-    border: none;
+    background-color: var(--primary-color); /* Заливка цветом */
+    color: var(--secondary-color); /* Белый текст */
+    border: none; /* Убираем границы */
+    padding: 10px;
+    font-size: 0.9rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    border-radius: 0; /* Убираем закругление */
+    transition: all 0.3s ease-in-out;
+    white-space: nowrap;
+    width: 100%; /* Занимает всю ширину ячейки */
+    box-sizing: border-box; /* Важно: включает padding и border в ширину */
+    text-align: center;
+    display: block;
+    margin: 0; /* Убираем отступы у кнопок */
 }
 
 .menubuttons:hover {
-    background-color: #3333aa
+    background-color: var(--hover-color); /* Изменение цвета при наведении */
+    color: var(--primary-color);
 }
 
-#gps_button {
-  width: 100vw;
-}
-
+/* Основная часть */
+/* Основная часть */
 .main {
-    margin: 0;
-    padding: 0;
-    width: 100vw;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+    margin-top: 140px; /* Отступ для контента */
 }
 
-/* Оформление для index.html */
-
-.location {
-    margin: 0;
-    padding: 0;
-    flex: 1;
-    font-family: Arial;
-    font-size: clamp(12px, 3vw, 32px);
-    font-weight: bold;
-    color: black;
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     text-align: center;
-    background-color: #aaaaff;
+    padding: 10px;
+    font-size: 0.8rem;
 }
 
-/* Тут продолжить в логичном порядке оформление */
+/* Стиль для названия локации */
+.location {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
 
-/* Like button by DeepSeek AI */
+/* Стиль для таблицы презентаций */
+.presentations {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
 
+/* Стиль для каждого доклада */
+.presentation-container {
+    border: 1px solid var(--hover-color); /* Тонкая граница */
+    border-radius: 8px; /* Закругленные углы */
+    padding: 15px; /* Увеличиваем отступы */
+    margin-bottom: 20px; /* Отступ между докладами */
+    background-color: #f9f9f9; /* Светлый фон */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Небольшая тень */
+}
+
+.presentations td {
+    padding: 8px;
+    border-bottom: 1px solid var(--hover-color);
+    text-align: left;
+}
+
+.presentations tr:last-child td {
+    border-bottom: none; /* Убираем границу у последней строки */
+}
+
+.presentation_name {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+.presentation_authors {
+    font-size: 0.9rem;
+    color: #666; /* Более приглушенный цвет для авторов */
+}
+
+.like-count {
+    text-align: center; /* Выравниваем текст по центру */
+    vertical-align: middle; /* Выравниваем по вертикали */
+    font-size: 1rem; /* Размер шрифта */
+    color: var(--primary-color); /* Цвет текста */
+    font-weight: bold; /* Жирный шрифт */
+    padding: 5px; /* Небольшой внутренний отступ */
+}
+
+/* Стиль для кнопки "like" */
+.like {
+    text-align: center;
+}
+
+/* Кнопка "like" */
+/* Стиль для кнопки "like" */
+.like {
+    text-align: center;
+}
+
+/* Стиль для кнопки "like" */
+.like {
+    text-align: center;
+}
+
+/* Кнопка "like" */
 .like-button {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 20px;
-    margin: 0px;
-    background-color: #f0f0f0;
-    border: none;
-    border-radius: 0px;
+    display: flex; /* Используем flex для центрирования иконки */
+    align-items: center; /* Выравниваем элементы по вертикали */
+    justify-content: center; /* Выравниваем элементы по горизонтали */
+    padding: 8px 15px; /* Отступы */
+    margin: 0 auto; /* Центрируем кнопку по горизонтали */
+    background-color: transparent; /* Прозрачный фон */
+    border: none; /* Убираем границу */
+    border-radius: 5px; /* Закругленные углы */
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-  }
+    width: 50px; /* Фиксированная ширина кнопки */
+    height: 50px; /* Фиксированная высота кнопки */
+}
 
-  .like-button:hover {
-    background-color: #e0e0e0;
-  }
+.like-button:hover {
+    background-color: rgba(0, 123, 255, 0.1); /* Легкий синий фон при наведении */
+}
 
-  .like-button:active {
+.like-button:active {
     transform: scale(0.95); /* Эффект нажатия */
-  }
+}
 
-  .thumb {
-    width: 20px;
-    height: 20px;
-    margin-right: 8px;
-    color: #ccc; /* Серый цвет по умолчанию */
-    transition: color 0.3s ease, transform 0.3s ease;
-  }
+.thumb {
+    width: 24px; /* Размер иконки */
+    height: 24px;
+    fill: #888; /* Серый цвет иконки в неактивном состоянии */
+    transition: fill 0.3s ease, transform 0.3s ease;
+}
 
-  .like-button.liked .thumb {
-    color: #007BFF; /* Синий цвет при лайке */
-  }
+/* Стиль для "лайкнутой" кнопки */
+.like-button.liked {
+    background-color: rgba(0, 123, 255, 0.2); /* Более насыщенный синий фон */
+}
 
-  .like-button.liked {
-    background-color: #f2f2f2;
-  }
+.like-button.liked .thumb {
+    fill: #007BFF; /* Синий цвет иконки */
+}
 
-/* End of like button */
+/* Адаптивность */
+@media (max-width: 768px) {
+    #header_up {
+        font-size: 0.9rem;
+    }
+    #header_down {
+        font-size: 1.1rem;
+    }
+    .menubuttons {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+    .location {
+        font-size: 1.3rem;
+    }
+    .presentation_name {
+        font-size: 1rem;
+    }
+    .presentation_authors {
+        font-size: 0.8rem;
+    }
+    .like-button {
+        padding: 4px 8px;
+    }
+}
