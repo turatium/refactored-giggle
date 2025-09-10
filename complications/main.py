@@ -6,8 +6,6 @@ program = SQLiteDatabase("static/program.db")
 users = SQLiteDatabase("static/users.db")
 app = Flask(__name__)
 
-# TODO: Изменить location на session в DB и везде, добавить таймстампы для докладов и сессий
-
 @app.route("/")
 def index():
     sessions = query(program, "SELECT * FROM sessions", fetch=True)
@@ -137,3 +135,6 @@ def get_likes():
 def results():
     presentations = query(program, "SELECT * FROM presentations ORDER BY likes DESC", fetch=True)
     return render_template ("results.html", presentations=presentations)
+
+if __name__ == '__main__':
+    app.run(debug=False)
