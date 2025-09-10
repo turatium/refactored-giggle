@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1> Добавить доклад </h1>
+    <form name="presentations" action="/addpresentation" method="POST">
+        <input class="redaction" type="text" name="presentation_name" placeholder="Название доклада" required>
+        <input class="redaction" type="text" name="authors" placeholder="Авторы" required>
+        <select name="session_id" placeholder="Выберите секцию" required>
+            {% for session in sessions %}
+                <option value="{{ session.id }}"> {{ session.name }} </option>
+            {% endfor %}
+        </select>
+        <button class="redaction_button" type="submit"> Добавить </button>
+    </form>
+    <h1> Добавить секцию </h1>
+    <form name="sessions" action="/addsession" method="POST"> <!-- Заменить на session -->
+        <input class="redaction" type="text" name="session_name" placeholder="Название локации" required>
+        <button class="redaction_button" type="submit"> Добавить </button>
+    </form>
+
+{% endblock %}

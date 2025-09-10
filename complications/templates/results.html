@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<h2 class = "location"> Результаты </h2>
+    <table class = "presentations">
+        <tbody>
+            {% for presentation in presentations %}
+                <tr>
+                    <td style="font-weight: bold" class="presentation_table_d" id="presentation_id"> {{ presentation.name }} </td>
+                    <td class="presentation_table_d" id="likes_q"> {{ presentation.likes }} </td>
+                </tr>
+                <tr>
+                    <td class="presentation_authors"> {{ presentation.authors }} </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

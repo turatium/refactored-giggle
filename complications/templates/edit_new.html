@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% for session in sessions %}
+<h2 class="location"> {{ session.name }} </h2> <!-- TODO: Заменить классы -->
+<table class="program_table">
+    <tbody>
+        {% for presentation in presentations %}
+            {% if presentation.session_id == session.id %}
+                <tr>
+                    <td style="font-weight: bold" class="program_d"> {{ presentation.name }} </td>
+                    <td class="program_d">
+                        <button type="button" class="delete-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <path d="M16 10a4 4 0 0 1-8 0"></path>
+                              </svg>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="presentation_authors"> {{ presentation.authors }} </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+{% endfor %}
+
+
+
+
+
+{% block body %}

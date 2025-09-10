@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang='ru'>
+
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title> Осложнения и ошибки в нейрохирургической практике </title>
+        <!-- CSS connection-->
+        <link rel='stylesheet' href="static/css/styles.css">
+        <!-- FingerprintsJS -->
+        <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@3/dist/fp.min.js"></script>
+        <!-- Подключение Axios через CDN -->
+         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <!--JavaScript-->
+        <script src="static/js/script.js"></script>
+    </head>
+
+    <body>
+        <!-- Header-->
+        <header>
+            <table class="header_table">
+                <tr>
+                    <td>
+                        <text class="header" id="header_up"> III Всероссийская научно-практическая конференция</text>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                         <text class="header" id="header_down"> Осложнения и ошибки в нейрохирургической практике </text>
+                    </td>
+
+                </tr>
+            </table>
+        </header>
+
+        <div class="menu">
+            <form action="/" method="GET">
+                <button type="submit" class="menubuttons" id="program"> Программа </button>
+            </form>
+ <!--
+                  <form action="/thesis" method="GET">
+                <button type="submit" class="menubuttons" id="thesis"> Сборник статей </button>
+            </form>
+              -->   
+        </div>
+        <!-- Программа и голосование -->
+        <div class='main'>
+            {% block body %}{% endblock %}
+        </div>
+    </body>
+    <!--Footer-->
+    <footer>
+        <h3> Красноярск - 2025 </h3>
+        <form action="/edit">
+            <button type="submit"> Редактировать программу </button>
+        </form>
+        <form action="/results">
+            <button type="submit"> Результаты </button>
+        </form>
+    </footer>
+
+</html>
