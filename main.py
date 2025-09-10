@@ -134,7 +134,7 @@ def get_likes():
 @app.route("/results", methods=["GET"])
 def results():
     presentations = query(program, "SELECT * FROM presentations ORDER BY likes DESC", fetch=True)
-    return render_template ("results.html", presentations=presentations)
+    return render_template ("results.html", sections=sections, presentations=presentations)
 
 if __name__ == '__main__':
     app.run(debug=False)
